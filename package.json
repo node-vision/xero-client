@@ -1,0 +1,33 @@
+{
+  "name": "xero-client",
+  "version": "0.0.1",
+  "description": "Node.Js integration client for Xero accounting software",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/node-vision/xero-client.git"
+  },
+  "keywords": [
+    "xero",
+    "accounting",
+    "node",
+    "integration",
+    "public",
+    "client"
+  ],
+  "author": "Roman Mandryk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/node-vision/xero-client/issues"
+  },
+  "homepage": "https://github.com/node-vision/xero-client#readme",
+  "dependencies": {
+    "easyxml": "^2.0.1",
+    "express-session": "^1.13.0",
+    "inflect": "^0.3.0",
+    "oauth": "^0.9.14"
+  }
+}
