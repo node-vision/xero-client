@@ -11,7 +11,7 @@ Features:
 
 # Usage
 
-1) Initialize client 
+## 1) Initialize client 
 
 - Xero key, secret and callback url are mandatory
 - session object is optional (pass reference to express session if you already have it defined in the app)
@@ -27,7 +27,8 @@ var xeroClient = require('xero-client')({
 ```
 `... initialize session`
 
-2) Set routes
+## 2) Set routes
+
 You will need 2 routes:
 - authentication entry point
 - callback when client is successfully authorized
@@ -41,7 +42,7 @@ router
   .get('/callback', xeroClient.callback);  
 ```
 
-3) Use client
+## 3) Use client -
 ```
 xeroClient.syncContacts(contacts, req, function(err, xeroContacts){
     if (err){
