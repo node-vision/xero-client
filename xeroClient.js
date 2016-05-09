@@ -173,8 +173,7 @@ exports.syncContacts = function (contacts, req, callback) {
 };
 
 /**
- * get all my invoices
- synchronizes all contacts (in Xero format) from local app to XERO
+ * synchronizes all invoices (in Xero format) from local app to XERO
  * @param invoices
  * @param req
  * @param callback
@@ -191,7 +190,14 @@ exports.syncInvoices = function (invoices, req, callback) {
   });
 };
 
-function makeGetRequest(req, root, url, callback) {
+/**
+ * raw get request function
+ * @param req - required to get req.session.xeroAuth parameters (xero token and secret)
+ * @param url - e.g. https://api.xero.com/api.xro/2.0/Invoices
+ * @param root - e.g. 'Invoices' 
+ * @param callback (err, result) - returns error or parsed js array of results
+ */
+function makeGetRequest(req, url, root, callback) {
   oauth.get(url,
     req.session.xeroAuth.access_token,
     req.session.xeroAuth.access_token_secret,
@@ -204,10 +210,26 @@ function makeGetRequest(req, root, url, callback) {
     });
 }
 
+/**
+ * raw put request function
+ * @param req - required to get req.session.xeroAuth parameters (xero token and secret)
+ * @param url - e.g. https://api.xero.com/api.xro/2.0/Payments
+ * @param xmlRoot - e.g. 'Payments'
+ * @param data - javascript array of objects in Xero format
+ * @param callback (err, result) - returns error or parsed js array of results
+ */
 function makePutRequest(req, url, xmlRoot, data, callback) {
   makePostOrPutRequest(req, url, xmlRoot, data, callback, true);
 }
 
+/**
+ * raw post request function
+ * @param req - required to get req.session.xeroAuth parameters (xero token and secret)
+ * @param url - e.g. https://api.xero.com/api.xro/2.0/Invoices
+ * @param xmlRoot - e.g. 'Invoices'
+ * @param data - javascript array of objects in Xero format
+ * @param callback (err, result) - returns error or parsed js array of results
+ */
 function makePostRequest(req, url, xmlRoot, data, callback) {
   makePostOrPutRequest(req, url, xmlRoot, data, callback, false);
 }
@@ -241,3 +263,6 @@ function makePostOrPutRequest(req, url, xmlRoot, data, callback, usePUT) {
     });
 }
 
+exports._getRequest = makeGetRequest;
+exports._postRequest = makePostRequest;
+exports._putRequest = makePutRequest;
