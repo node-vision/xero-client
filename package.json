@@ -1,6 +1,6 @@
 {
   "name": "xero-client",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node.Js integration client for Xero accounting software",
   "main": "index.js",
   "scripts": {
