@@ -9,6 +9,7 @@ module.exports = function(){
   res.getOrganizationInfo = xeroClient.getOrganizationInfo;
   res.syncStatus = xeroClient.syncStatus;
   res.authenticate = xeroClient.requestXeroRequestToken;
+  res.callback = xeroClient.requestXeroAccessToken;
   res._getRequest = xeroClient._getRequest;
   res._postRequest = xeroClient._postRequest;
   res._putRequest = xeroClient._putRequest;
